@@ -12,26 +12,22 @@ window.addEventListener("load", function() {
 	video.autoplay = false;
 	video.loop = false;
 
-	//start video elemennt and turn off autoplay
-		video = document.querySelector("#player1");
-		video.autoplay = false;
-		video.loop = false;
+	//added event listeners for the play button
+	document.querySelector("#play").addEventListener("click", function() {
+        console.log("Play Video");
+        video.play(); // play the video;
 
+		// Update the volume display
+		let volume = video.volume * 100; // Convert volume to percentage
+		document.querySelector("#volume").textContent = `Volume: ${volume.toFixed(0)}%`;
 
-	// added event listener for the volume slider
-	document.querySelector("#slider").addEventListener("input", function () {
-		let sliderValue = this.value; // slider value (0-100)
-		video.volume = sliderValue / 100; // video volume set (0.0-1.0)
-		console.log(`Volume set to: ${sliderValue}%`);
-		document.querySelector("#volume").textContent = `Volume: ${sliderValue}%`; // updates the volume display
 	});
+
 
     // added event listener for the pause button
     document.querySelector("#pause").addEventListener("click", function() {
         console.log("Pause Video");
         video.pause(); // Pause the video
-		document.querySelector("#volume").innerHTML = video.volume * 100 + "%"; //update volume
-	
     });
 
     // add event listener for the slow down button
