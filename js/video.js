@@ -16,10 +16,7 @@ window.addEventListener("load", function() {
 	document.querySelector("#play").addEventListener("click", function() {
         console.log("Play Video");
         video.play(); // play the video;
-
-		// Update the volume display
-		let volume = video.volume * 100; // Convert volume to percentage
-		document.querySelector("#volume").textContent = `Volume: ${volume.toFixed(0)}%`;
+		document.querySelector("#volume").innerHTML = video.volume * 100 + "%";
 
 	});
 
