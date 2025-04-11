@@ -12,12 +12,11 @@ window.addEventListener("load", function() {
 	video.autoplay = false;
 	video.loop = false;
 
-	//added event listeners for the play button
-	document.querySelector("#play").addEventListener("click", function() {
-        console.log("Play Video");
-        video.play(); // play the video;
+	//start video elemennt and turn off autoplay
+		video = document.querySelector("#player1");
+		video.autoplay = false;
+		video.loop = false;
 
-	});
 
 	// added event listener for the volume slider
 	document.querySelector("#slider").addEventListener("input", function () {
