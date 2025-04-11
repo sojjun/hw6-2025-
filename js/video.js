@@ -31,6 +31,8 @@ window.addEventListener("load", function() {
     document.querySelector("#pause").addEventListener("click", function() {
         console.log("Pause Video");
         video.pause(); // Pause the video
+		document.querySelector("#volume").innerHTML = video.volume * 100 + "%"; //update volume
+	
     });
 
     // add event listener for the slow down button
@@ -66,16 +68,24 @@ window.addEventListener("load", function() {
 
 	// add event listener for the mute button
 	document.querySelector("#mute").addEventListener("click", function() {
+		console.log("Video Muted");
 		if (video.muted) {
-			video.muted = false; // unmute the video
-			this.textContent = "Mute"; // update button
-			console.log("Video unmuted");
+			video.muted = false;
+			document.querySelector("#mute").innerHTML = "Mute";
 		} else {
-			video.muted = true; // mute the video
-			this.textContent = "Unmute"; // update button
-			console.log("Video muted");
+			video.muted = true;
+			document.querySelector("#mute").innerHTML = "Unmute";
 		}
-		});
+	});
+
+
+	// add event listener for the volume slider
+	document.querySelector("#slider").addEventListener("change", function() {
+		console.log("Change Volume");
+		video.volume = document.querySelector("#slider").value / 100;
+		document.querySelector("#volume").innerHTML = video.volume * 100 + "%";
+	});
+
 	// added event listener for the "Old School" button
 	document.querySelector("#vintage").addEventListener("click", function() {
 		video.classList.add("oldSchool"); // add the oldSchool class to the video
